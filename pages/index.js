@@ -1,6 +1,8 @@
 import client from "@/tina/__generated__/client";
 import styles from "./index.module.scss";
 import { useTina } from "tinacms/dist/react";
+import { useQuery } from "@apollo/client";
+import { GET_PROFILE } from "@/gqlops";
 
 export default function Home(props) {
   const { data } = useTina({
@@ -8,8 +10,10 @@ export default function Home(props) {
     variables: props.variables,
     data: props.data,
   });
+
+  const {data:profileD} = useQuery(GET_PROFILE)
   
-  const profileData = data.profile
+  const profileData = profileD?.profile
 
   return (
     <div className={styles.container}>
