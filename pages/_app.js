@@ -2,8 +2,7 @@ import "@/styles/globals.css";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  // uri: "http://localhost:4001/graphql",
-  uri: `https://content.tinajs.io/v1.22/content/0ad2b629-c4a9-42c8-9e42-b8816dbbecd0/github/main`,
+  uri: "http://localhost:4001/graphql",
   cache: new InMemoryCache(),
   mode: 'no-cors',
 });

@@ -11,9 +11,7 @@ export default function Home(props) {
     data: props.data,
   });
 
-  const {data:profileD} = useQuery(GET_PROFILE)
-  
-  const profileData = profileD?.profile
+  const profileData = data?.profile
 
   return (
     <div className={styles.container}>
@@ -26,7 +24,9 @@ export default function Home(props) {
 }
 
 export const getStaticProps = async () => {
-  let { data, variables, query } = await client.queries.profile({relativePath:"Manikanta.mdx"});
+  let { data, variables, query } = await client.queries.profile({
+    relativePath: "Manikanta.mdx",
+  });
 
   return {
     props: {
