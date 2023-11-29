@@ -8,7 +8,7 @@ export default function Example(props) {
   return (
     <div>
       {profileData?.length &&
-        profileData.map((profile) => <h1>{profile.node.designation}</h1>)}
+        profileData.map((profile, idx) => <h1 key={idx}>{profile.node.designation}</h1>)}
     </div>
   );
 }
