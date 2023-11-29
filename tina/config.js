@@ -1,3 +1,4 @@
+import { UploadPDF } from "../tina-components/upload";
 import { defineConfig } from "tinacms";
 
 // Your hosting provider likely exposes this as an environment variable
@@ -41,7 +42,42 @@ export default defineConfig({
           router: ({ document }) => {
             return `/`;
           },
+          beforeSubmit: async ({ form, cms, values }) => {
+            let updatedVals = { ...values, name: "am" };
+            console.log(updatedVals);
+
+            return { ...updatedVals };
+          },
         },
+      },
+      {
+        label: "Articles",
+        name: "article",
+        path: "content/article",
+        format: "mdx",
+        ui: {
+          // filename: {
+          //   slugify: (values, other, any) => {
+          //     console.log(other, "values");
+          //     return `${values?.date}/${values?.title}`;
+          //   },
+          // },
+        },
+        fields: [
+          {
+            type: "string",
+            label: "Title",
+            name: "title",
+          },
+          // {
+          //   type: "string",
+          //   name: "pdf",
+          //   label: "Article PDF",
+          //   ui:{
+          //     component: UploadPDF
+          //   }
+          // },
+        ],
       },
     ],
   },
