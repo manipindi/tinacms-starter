@@ -15,16 +15,14 @@ export default function Article(props) {
   return (
     <div>
       {artiledata?.map((article, idx) => (
-        <p key={idx}>{article.node.date}</p>
+        <p key={idx}>{article.node.title}</p>
       ))}
     </div>
   );
 }
 
 export const getStaticProps = async () => {
-  let { data, query, variables } = await client.queries.articleConnection({
-    filter: { _sys: { filename: { eq: "mani" } } },
-  });
+  let { data, query, variables } = await client.queries.articleConnection()
 
   return {
     props: {
