@@ -14,8 +14,8 @@ export default function Article(props) {
   console.log(artiledata);
   return (
     <div>
-      {artiledata?.map((article) => (
-        <p>{article.node.date}</p>
+      {artiledata?.map((article, idx) => (
+        <p key={idx}>{article.node.date}</p>
       ))}
     </div>
   );
