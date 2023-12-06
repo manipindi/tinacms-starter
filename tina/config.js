@@ -1,3 +1,4 @@
+import { PdfGenerator } from "../tina-components/PdfGenetator";
 import { UploadPDF } from "../tina-components/upload";
 import { defineConfig } from "tinacms";
 
@@ -55,28 +56,26 @@ export default defineConfig({
         name: "article",
         path: "content/article",
         format: "mdx",
-        ui: {
-          // filename: {
-          //   slugify: (values, other, any) => {
-          //     console.log(other, "values");
-          //     return `${values?.date}/${values?.title}`;
-          //   },
-          // },
-        },
+        ui: {},
         fields: [
           {
             type: "string",
             label: "Title",
             name: "title",
           },
-          // {
-          //   type: "string",
-          //   name: "pdf",
-          //   label: "Article PDF",
-          //   ui:{
-          //     component: UploadPDF
-          //   }
-          // },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+          },
+          {
+            type: "string",
+            name: "pdf_generator",
+            label: "PDF Generator",
+            ui: {
+              component: PdfGenerator,
+            },
+          },
         ],
       },
     ],
