@@ -1,4 +1,5 @@
 import client from "@/tina/__generated__/client";
+import { Flex } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import { useTina } from "tinacms/dist/react";
@@ -13,16 +14,18 @@ export default function Article(props) {
   let artiledata = data?.articleConnection?.edges;
   console.log(artiledata);
   return (
-    <div>
+    <Flex flexDir={"column"} gap={"10px"}>
       {artiledata?.map((article, idx) => (
-        <p key={idx}>{article.node.title}</p>
+        <Link href={`articles/${article.node.title}`} key={idx}>
+          {article.node.title}
+        </Link>
       ))}
-    </div>
+    </Flex>
   );
 }
 
 export const getStaticProps = async () => {
-  let { data, query, variables } = await client.queries.articleConnection()
+  let { data, query, variables } = await client.queries.articleConnection();
 
   return {
     props: {
