@@ -57,32 +57,32 @@ export default defineConfig({
         name: "article",
         path: "content/article",
         format: "mdx",
-        ui: {
-          beforeSubmit: ({ form, cms, values }) => {
-            const changedValues = { ...values };
-            if (changedValues?.csv_data) {
-              const csvData = JSON.parse(changedValues?.csv_data);
-              if (csvData?.length) {
-                csvData.filter((eachData) => {
-                  if (eachData?.Contene) {
-                    eachData.Contene = {
-                      type: "root",
-                      children: [
-                        {
-                          type: "p",
-                          children: [{ type: "text", text: eachData.Contene }],
-                        },
-                      ],
-                    };
-                  }
-                });
-                changedValues.names_ages = csvData;
-                delete changedValues.csv_data;
-              }
-            }
-            return { ...changedValues };
-          },
-        },
+        // ui: {
+        //   beforeSubmit: ({ form, cms, values }) => {
+        //     const changedValues = { ...values };
+        //     if (changedValues?.csv_data) {
+        //       const csvData = JSON.parse(changedValues?.csv_data);
+        //       if (csvData?.length) {
+        //         csvData.filter((eachData) => {
+        //           if (eachData?.Contene) {
+        //             eachData.Contene = {
+        //               type: "root",
+        //               children: [
+        //                 {
+        //                   type: "p",
+        //                   children: [{ type: "text", text: eachData.Contene }],
+        //                 },
+        //               ],
+        //             };
+        //           }
+        //         });
+        //         changedValues.names_ages = csvData;
+        //         delete changedValues.csv_data;
+        //       }
+        //     }
+        //     return { ...changedValues };
+        //   },
+        // },
         fields: [
           {
             type: "string",
@@ -102,37 +102,37 @@ export default defineConfig({
               component: PdfGenerator,
             },
           },
-          {
-            name: "names_ages",
-            label: "Names and Ages",
-            type: "object",
-            list: true,
-            fields: [
-              {
-                type: "string",
-                label: "Name",
-                name: "Name",
-              },
-              {
-                type: "string",
-                label: "Age",
-                name: "Age",
-              },
-              {
-                type: "rich-text",
-                label: "Content",
-                name: "Contene",
-              },
-            ],
-          },
-          {
-            type: "string",
-            name: "csv_data",
-            label: "Upload CSV",
-            ui: {
-              component: CsvReader,
-            },
-          },
+          // {
+          //   name: "names_ages",
+          //   label: "Names and Ages",
+          //   type: "object",
+          //   list: true,
+          //   fields: [
+          //     {
+          //       type: "string",
+          //       label: "Name",
+          //       name: "Name",
+          //     },
+          //     {
+          //       type: "string",
+          //       label: "Age",
+          //       name: "Age",
+          //     },
+          //     {
+          //       type: "rich-text",
+          //       label: "Content",
+          //       name: "Contene",
+          //     },
+          //   ],
+          // },
+          // {
+          //   type: "string",
+          //   name: "csv_data",
+          //   label: "Upload CSV",
+          //   ui: {
+          //     component: CsvReader,
+          //   },
+          // },
         ],
       },
     ],

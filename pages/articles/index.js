@@ -16,7 +16,7 @@ export default function Article(props) {
   return (
     <Flex flexDir={"column"} gap={"10px"}>
       {artiledata?.map((article, idx) => (
-        <Link href={`articles/${article.node.title}`} key={idx}>
+        <Link href={`articles/${article.node._sys.filename}`} key={idx}>
           {article.node.title}
         </Link>
       ))}
@@ -24,7 +24,8 @@ export default function Article(props) {
   );
 }
 
-export const getServerSideProps = async () => {
+
+export const getStaticProps = async () => {
   let { data, query, variables } = await client.queries.articleConnection();
 
   return {
