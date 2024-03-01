@@ -19,7 +19,7 @@ export default function Article({ userData }) {
       setIsLoading(false)
     });
   }, [router])
-  console.log(router.isFallback);
+  console.log(isLoading, "isLoading");
   return <div>{userData?.article?.title}</div>;
 }
 
