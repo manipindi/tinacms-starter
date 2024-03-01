@@ -25,7 +25,7 @@ export default function Article(props) {
 }
 
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   let { data, query, variables } = await client.queries.articleConnection();
 
   return {
